@@ -1057,63 +1057,53 @@
 </section>
 
   <!-- Contact -->
-<section id="contact" class="py-5 bg-light" style="margin: 30px 0;">
-  <div class="container" style="max-width: 900px;">
-    <h2 class="fw-bold text-center mb-4">📞 Contact Me</h2>
+<section id="contact" class="container mt-5 py-5">
+  <h2 class="fw-bold text-center mb-4">Contact Me</h2>
 
-    <form id="contact-form" class="mx-auto" style="max-width: 600px;">
-      <div class="mb-3">
-        <input type="text" class="form-control" name="name" placeholder="Your Name" required />
-      </div>
-      <div class="mb-3">
-        <input type="email" class="form-control" name="email" placeholder="Your Email" required />
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" name="subject" placeholder="Subject" required />
-      </div>
-      <div class="mb-3">
-        <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-      </div>
+  <!-- Success Alert -->
+  <div id="success-alert" class="alert alert-success text-center d-none" role="alert">
+    ✅ Your message has been successfully sent!
+  </div>
+
+  <form id="contact-form" class="mx-auto" style="max-width: 600px;">
+    <input type="hidden" name="_captcha" value="false">
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Subject</label>
+      <input type="text" class="form-control" id="subject" name="subject" >
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message</label>
+      <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+    </div>
+    <div class="text-center">
       <button type="submit" class="btn btn-warning text-dark shadow">Send Message</button>
-    </form>
-
-    <!-- Icons -->
-    <div class="d-flex justify-content-center gap-4 flex-wrap mt-5">
-      <a href="mailto:girivardhan2301@gmail.com" class="text-dark" target="_blank"><i class="fas fa-envelope fa-2x text-danger"></i></a>
-      <a href="tel:+917032112301" class="text-dark" target="_blank"><i class="fas fa-phone-alt fa-2x text-success"></i></a>
-      <a href="https://github.com/GirivardhanNalluri" class="text-dark" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-      <a href="https://www.linkedin.com/in/girivardhan-nalluri-215341267/" class="text-primary" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
     </div>
+  </form>
 
-    <!-- Social Media -->
-    <div class="d-flex justify-content-center gap-4 flex-wrap mt-3">
-      <a href="https://wa.me/917032112301" class="text-success" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
-      <a href="https://www.instagram.com/girivardhan_nalluri" class="text-danger" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-      <a href="https://www.snapchat.com/add/girinalluri" class="text-warning" target="_blank"><i class="fab fa-snapchat-ghost fa-2x"></i></a>
-    </div>
+  <!-- Contact Icons -->
+  <div class="d-flex justify-content-center gap-4 flex-wrap mt-5">
+    <a href="mailto:girivardhan2301@gmail.com" target="_blank" class="text-dark"><i class="fas fa-envelope fa-2x text-danger"></i></a>
+    <a href="tel:+917032112301" target="_blank" class="text-dark"><i class="fas fa-phone-alt fa-2x text-success"></i></a>
+    <a href="https://github.com/GirivardhanNalluri" target="_blank" class="text-dark"><i class="fab fa-github fa-2x"></i></a>
+    <a href="https://www.linkedin.com/in/girivardhan-nalluri-215341267/" target="_blank" class="text-primary"><i class="fab fa-linkedin fa-2x"></i></a>
+  </div>
+
+  <!-- Social Media Icons -->
+  <div class="d-flex justify-content-center gap-4 flex-wrap mt-3">
+    <a href="https://wa.me/917032112301" target="_blank" class="text-success"><i class="fab fa-whatsapp fa-2x"></i></a>
+    <a href="https://www.instagram.com/girivardhan_nalluri" target="_blank" class="text-danger"><i class="fab fa-instagram fa-2x"></i></a>
+    <a href="https://www.snapchat.com/add/girinalluri" target="_blank" class="text-warning"><i class="fab fa-snapchat-ghost fa-2x"></i></a>
   </div>
 </section>
-
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("ULoXIAGJfZeRNIzHG"); 
-  })();
-
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    emailjs.sendForm("service_cjf5b6t", "__ejs-test-mail-service__", this)
-      .then(function () {
-        alert("Message sent successfully!");
-        document.getElementById("contact-form").reset();
-      }, function (error) {
-        alert("Failed to send message. Please try again.");
-        console.error("Error:", error);
-      });
-  });
-</script>
 
 <!-- Back to Top Button -->
 <button type="button" class="btn btn-warning position-fixed" id="backToTopBtn" title="Go to top"
@@ -1158,6 +1148,37 @@
   // Scroll to top on click
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // stop default redirect behavior
+
+    const form = this;
+    const formData = new FormData(form);
+    const alertBox = document.getElementById("success-alert");
+
+    fetch("https://formsubmit.co/ajax/girivardhan2301@gmail.com", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // scroll to contact section
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+
+      // show success alert
+      alertBox.classList.remove("d-none");
+
+      // hide after 3 seconds
+      setTimeout(() => {
+        alertBox.classList.add("d-none");
+      }, 3000);
+
+      form.reset(); // clear form fields
+    })
+    .catch(error => {
+      alert("❌ Failed to send message. Please try again.");
+      console.error("Error:", error);
+    });
   });
 </script>
 
