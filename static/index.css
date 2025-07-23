@@ -1,3 +1,11 @@
+.explore-icon {
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the rotation */
+}
+
+.btn-warning:hover .explore-icon {
+    transform: rotate(90deg); /* Rotates the arrow 90 degrees clockwise (down) */
+}
+
 /* Navbar background */
 nav.custom-navbar {
   background-color: #1f2937; /* Tailwind slate-800, a nice dark shade */
