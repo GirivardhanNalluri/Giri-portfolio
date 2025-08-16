@@ -153,15 +153,6 @@
           </div>
         </div>
       </div>
-      <!-- Project 5 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm" data-bs-toggle="modal" data-bs-target="#portfolioModal" style="cursor: pointer;">
-          <img src="static/images/port.jpg" class="card-img-top" style="max-height: 250px; object-fit: contain; background-color: lightskyblue;" alt="Portfolio" />
-          <div class="card-body">
-            <h5 class="card-title">Portfolio's</h5>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -481,136 +472,6 @@
     </div>
   </div>
 </div>
-<!-- Portfolio Modal -->
-<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content bg-light">
-      <div class="modal-header" style="background: linear-gradient(135deg, #8e2de2, #4a00e0); color: white;">
-        <h5 class="modal-title" id="portfolioModalLabel">✨ Portfolios Built by Me</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4" style="overflow-y:auto; max-height:100vh;">
-        <section class="container my-4">
-          <div class="row justify-content-center">
-            <div class="col-md-10">
-              <div class="card hover-effect-card p-4 shadow-sm text-center">
-                <h5 class="mb-3 text-primary">Project Summary</h5>
-                <p class="lead mb-0 text-dark">
-                  These are a few portfolio websites I created in my free time as a hobby.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="container container-projects">
-          <div class="row g-4">
-            <div class="col-12 col-md-6">
-              <div class="project-box hover-effect-card" onclick="openPortfolio('Nalluri Harsha Vardhan', 'https://harsha-portfolio-zeta.vercel.app/', 'https://github.com/GirivardhanNalluri/Harsha-portfolio')">
-                <h4 class="text-danger">Nalluri Harsha Vardhan</h4>
-                <p>Personal portfolio with smooth animations, built by me.</p>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="project-box hover-effect-card" onclick="openPortfolio('Jhansi Priya Murella', 'https://jhansipriya-portfolio.vercel.app/', 'https://github.com/GirivardhanNalluri/Jhansi-Portfolio')">
-                <h4 class="text-warning">Jhansi Priya Murella</h4>
-                <p>Modern portfolio site featuring academic profile and elegant styling.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Popup for portfolio projects -->
-<div class="popup-overlay" id="portfolioPopupOverlay">
-  <div class="popup">
-    <button class="btn-close-fa" onclick="closePortfolioPopup()"><i class="fas fa-times"></i></button>
-    <h5 id="portfolioPopupTitle">Visit Portfolio</h5>
-    <button id="portfolioVisitBtn" class="btn btn-primary">Visit Website</button>
-    <button id="portfolioCodeBtn" class="btn btn-secondary">View Code</button>
-  </div>
-</div>
-
-<!-- Portfolio popup script -->
-<script>
-  function openPortfolio(title, websiteURL, codeURL) {
-    document.getElementById("portfolioPopupTitle").innerText = title;
-    document.getElementById("portfolioVisitBtn").onclick = () => window.open(websiteURL, "_blank");
-    document.getElementById("portfolioCodeBtn").onclick = () => window.open(codeURL, "_blank");
-    document.getElementById("portfolioPopupOverlay").style.display = "flex";
-  }
-
-  function closePortfolioPopup() {
-    document.getElementById("portfolioPopupOverlay").style.display = "none";
-  }
-
-  document.getElementById("portfolioPopupOverlay").addEventListener("click", e => {
-    if (e.target === document.getElementById("portfolioPopupOverlay")) {
-      closePortfolioPopup();
-    }
-  });
-</script>
-
-<!-- Add this CSS to your main stylesheet or a <style> tag -->
-<style>
-  .project-box {
-    background: white;
-    border: 2px solid #eee;
-    border-radius: 10px;
-    padding: 40px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .project-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    background: #f2f2f2;
-  }
-
-  .popup-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-
-  .popup {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    position: relative;
-  }
-
-  .btn-close-fa {
-    position: absolute;
-    top: 10px; right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    color: #444;
-    cursor: pointer;
-  }
-
-  .btn-close-fa:hover {
-    color: #dc3545;
-  }
-</style>
 <!-- Earthquake Script -->
 <script>
   function openVideo(src) {
@@ -1185,3 +1046,4 @@
 
 </body>
 </html>
+
